@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 abstract class TuringMachine {
+    
+    public static final char EMPTY_CHAR = 'B';
 
     List<Character> tape;
     private MachineHead machineHead;
