@@ -25,6 +25,10 @@ public class Tape {
         return this.current;
     }
 
+    public void write(char character) {
+        this.current = character;
+    }
+
     public void moveLeft() {
         move(right, left);
     }
