@@ -1,12 +1,12 @@
 package turingMachine;
 
-class Transition {
+public class Transition {
 
     private int stateToGo;
     private char signToWrite;
     private Direction direction;
 
-    Transition(int stateToGo, char signToWrite, Direction direction) {
+    public Transition(int stateToGo, char signToWrite, Direction direction) {
         this.stateToGo = stateToGo;
         this.signToWrite = signToWrite;
         this.direction = direction;
