@@ -1,28 +1,34 @@
 package turingMachine;
 
+import turingMachine.exceptions.WrongTransitionFunctionException;
+import turingMachine.transition.Transition;
 import turingMachine.tape.Tape;
-import java.util.ArrayList;
-import java.util.Map;
-import turingMachine.tape.LinkedListTape;
+import java.util.Set;
+import turingMachine.state.State;
+import turingMachine.tape.ArrayListTape;
+import turingMachine.transition.TransitionFunction;
 
 public class TuringMachine {
 
     public static final char EMPTY_CHAR = 'B';
-    public static final int END_STATE = -1;
 
     private Tape tape;
-    private int state;
-    private ArrayList<Map<Character, Transition>> transitionFunction;
+    private State state;
+    private TransitionFunction transitionFunction;
+    private State beginState;
+    private Set<State> acceptStates;
 
-    public TuringMachine(ArrayList<Map<Character, Transition>> transitionFunction) {
+    public TuringMachine(TransitionFunction transitionFunction, State beginState, Set<State> acceptStates) {
         this.transitionFunction = transitionFunction;
+        this.beginState = beginState;
+        this.acceptStates = acceptStates;
     }
 
     public void execute(String word) throws WrongTransitionFunctionException {
-        this.tape = new LinkedListTape(word);
-        this.state = 0;
-        while (state != END_STATE) {
-            Transition transition = this.transitionFunction.get(state).get(tape.read());
+        this.tape = new ArrayListTape(word);
+        this.state = beginState;
+        while (!acceptStates.contains(state)) {
+            Transition transition = this.transitionFunction.get(state, tape.read());
             if (transition == null) {
                 throw new WrongTransitionFunctionException();
             }

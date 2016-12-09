@@ -1,26 +1,29 @@
-package turingMachine;
+package turingMachine.transition;
+
+import turingMachine.enums.Direction;
+import turingMachine.state.State;
 
 public class Transition {
 
-    private int stateToGo;
+    private State stateToGo;
     private char signToWrite;
     private Direction direction;
 
-    public Transition(int stateToGo, char signToWrite, Direction direction) {
+    public Transition(State stateToGo, char signToWrite, Direction direction) {
         this.stateToGo = stateToGo;
         this.signToWrite = signToWrite;
         this.direction = direction;
     }
 
-    int getStateToGo() {
+    public State getStateToGo() {
         return stateToGo;
     }
 
-    char getSignToWrite() {
+    public char getSignToWrite() {
         return signToWrite;
     }
 
-    Direction getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 }
