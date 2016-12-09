@@ -1,4 +1,4 @@
-package turingMachine;
+package turingMachine.exceptions;
 
 public class WrongTransitionFunctionException extends Exception {
 

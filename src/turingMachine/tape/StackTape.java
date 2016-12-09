@@ -2,7 +2,7 @@ package turingMachine.tape;
 
 import java.util.Stack;
 import java.util.stream.Collectors;
-import turingMachine.Direction;
+import turingMachine.enums.Direction;
 import static turingMachine.TuringMachine.EMPTY_CHAR;
 
 /**

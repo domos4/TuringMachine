@@ -3,7 +3,7 @@ package turingMachine.tape;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
-import turingMachine.Direction;
+import turingMachine.enums.Direction;
 import static turingMachine.TuringMachine.EMPTY_CHAR;
 
 /**

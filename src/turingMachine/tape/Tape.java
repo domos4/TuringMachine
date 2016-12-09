@@ -1,6 +1,6 @@
 package turingMachine.tape;
 
-import turingMachine.Direction;
+import turingMachine.enums.Direction;
 
 /**
  *

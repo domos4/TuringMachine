@@ -2,10 +2,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import turingMachine.Direction;
-import turingMachine.Transition;
+import turingMachine.enums.Direction;
+import turingMachine.transition.Transition;
 import turingMachine.TuringMachine;
-import turingMachine.WrongTransitionFunctionException;
+import turingMachine.exceptions.WrongTransitionFunctionException;
 import utilities.UnaryParser;
 
 public class Main {

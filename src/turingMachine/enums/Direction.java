@@ -1,4 +1,4 @@
-package turingMachine;
+package turingMachine.enums;
 
 public enum Direction {
     LEFT(-1),
