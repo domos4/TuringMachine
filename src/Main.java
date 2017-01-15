@@ -14,12 +14,18 @@ public class Main {
     public static void main(String[] args) throws WrongTransitionFunctionException, InterruptedException {
         int n = 3;
         int m = 3;
+        int waitTime = 0;
         if (args.length > 1) {
             n = Integer.parseInt(args[0]);
             m = Integer.parseInt(args[1]);
+            if (args.length == 3) {
+                waitTime = Integer.parseInt(args[2]);
+            }
         }
         TuringMachine multiplyingTuringMachine = turingMachineForMultiplyingTwoNaturalNumbers();
-        multiplyingTuringMachine.attachObserver(new ConsoleOutTuringMachineObserver(100));
+        if (waitTime > 0) {
+            multiplyingTuringMachine.attachObserver(new ConsoleOutTuringMachineObserver(waitTime));
+        }
         long startTime = System.currentTimeMillis();
         multiplyingTuringMachine.execute(UnaryParser.parseToUnary(n) + "#" + UnaryParser.parseToUnary(m));
         long executeTime = System.currentTimeMillis() - startTime;

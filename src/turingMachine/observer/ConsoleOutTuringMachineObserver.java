@@ -22,6 +22,11 @@ public class ConsoleOutTuringMachineObserver implements TuringMachineObserver {
     @Override
     public void afterMove(Tape tape, State state) {
         printOnConsole(tape, state);
+    }
+
+    private void printOnConsole(Tape tape, State state) {
+        System.out.println(tape.printWithCurrentPosition());
+        System.out.println(state);
         if (waitAfterMove > 0) {
             try {
                 Thread.sleep(waitAfterMove);
@@ -29,11 +34,6 @@ public class ConsoleOutTuringMachineObserver implements TuringMachineObserver {
                 System.out.println("INTERRUPTED!");
             }
         }
-    }
-
-    private void printOnConsole(Tape tape, State state) {
-        System.out.println(tape.printWithCurrentPosition());
-        System.out.println(state);
     }
 
 }
