@@ -28,14 +28,19 @@ public class TuringMachine {
         this.tape = new ArrayListTape(word);
         this.state = beginState;
         while (!acceptStates.contains(state)) {
-            Transition transition = this.transitionFunction.get(state, tape.read());
-            if (transition == null) {
-                throw new WrongTransitionFunctionException();
+            move();
             }
-            this.tape.write(transition.getSignToWrite());
-            this.tape.move(transition.getDirection());
-            this.state = transition.getStateToGo();
         }
+    }
+
+    private void move() throws WrongTransitionFunctionException {
+        Transition transition = this.transitionFunction.get(state, tape.read());
+        if (transition == null) {
+            throw new WrongTransitionFunctionException(state, tape.read());
+        }
+        this.tape.write(transition.getSignToWrite());
+        this.tape.move(transition.getDirection());
+        this.state = transition.getStateToGo();
     }
 
     public String printTape() {
