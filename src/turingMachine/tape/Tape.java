@@ -15,4 +15,6 @@ public interface Tape {
     public void move(Direction direction);
 
     public String print();
+
+    public String printWithCurrentPosition();
 }

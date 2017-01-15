@@ -22,11 +22,15 @@ public class ArrayListTape implements Tape {
 
     @Override
     public char read() {
-        return this.container.get(this.idx);
+        return this.container.isEmpty() ? EMPTY_CHAR : this.container.get(this.idx);
     }
 
     @Override
     public void write(char character) {
+        if (container.isEmpty()) {
+            container.add(EMPTY_CHAR);
+            idx = 0;
+        }
         this.container.set(idx, character);
     }
 
@@ -49,6 +53,16 @@ public class ArrayListTape implements Tape {
     @Override
     public String print() {
         return container.stream().map(c -> c.toString()).collect(Collectors.joining());
+    }
+
+    @Override
+    public String printWithCurrentPosition() {
+        String which = "";
+        for (int i = 0; i < container.size(); i++) {
+            which += i == idx ? "|" : " ";
+        }
+        which += "\n";
+        return which + print();
     }
 
 }

@@ -69,4 +69,9 @@ public class StackTape implements Tape {
         return out;
     }
 
+    @Override
+    public String printWithCurrentPosition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

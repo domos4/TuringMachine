@@ -74,4 +74,9 @@ public class LinkedListTape implements Tape {
         return container.stream().map(c -> c.toString()).collect(Collectors.joining());
     }
 
+    @Override
+    public String printWithCurrentPosition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
