@@ -18,6 +18,11 @@ public class State {
     }
 
     @Override
+    public String toString() {
+        return "State{" + "name=" + name + ", description=" + description + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 13 * hash + Objects.hashCode(this.name);
