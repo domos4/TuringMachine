@@ -1,5 +1,6 @@
 package turingMachine;
 
+import turingMachine.observer.TuringMachineObserver;
 import turingMachine.exceptions.WrongTransitionFunctionException;
 import turingMachine.transition.Transition;
 import turingMachine.tape.Tape;
@@ -18,6 +19,8 @@ public class TuringMachine {
     private State beginState;
     private Set<State> acceptStates;
 
+    private TuringMachineObserver observer = null;
+
     public TuringMachine(TransitionFunction transitionFunction, State beginState, Set<State> acceptStates) {
         this.transitionFunction = transitionFunction;
         this.beginState = beginState;
@@ -27,8 +30,13 @@ public class TuringMachine {
     public void execute(String word) throws WrongTransitionFunctionException {
         this.tape = new ArrayListTape(word);
         this.state = beginState;
+        if (observer != null) {
+            observer.afterStart(tape, state);
+        }
         while (!acceptStates.contains(state)) {
             move();
+            if (observer != null) {
+                observer.afterMove(tape, state);
             }
         }
     }
@@ -45,5 +53,9 @@ public class TuringMachine {
 
     public String printTape() {
         return this.tape.print();
+    }
+
+    public void attachObserver(TuringMachineObserver observer) {
+        this.observer = observer;
     }
 }
